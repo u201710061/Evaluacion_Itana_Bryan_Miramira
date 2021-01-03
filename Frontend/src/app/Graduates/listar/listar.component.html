@@ -15,12 +15,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="text-center">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr *ngFor="let graduates of graduatesList" class="text-center">
+                        <td>{{graduates.id}}</td>
+                        <td>{{graduates.year}}</td>
+                        <td>{{graduates.sex}}</td>
+                        <td>{{graduates.type_of_course}}</td>
+                        <td>{{graduates.quantity}}</td>
                         <td>
                             <button class="btn btn-warning">Editar</button>
                         </td>

@@ -22,7 +22,6 @@ public class GraduatesController {
     public List<Graduates> addGraduatesList(@RequestBody List<Graduates> graduatesList){
         return graduatesService.saveGraduatesList(graduatesList);
     }
-
     @GetMapping("/graduates")
     public  List<Graduates> findAllGraduates()
     {

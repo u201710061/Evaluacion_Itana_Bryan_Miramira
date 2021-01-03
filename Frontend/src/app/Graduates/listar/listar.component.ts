@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Graduates } from 'src/app/Model/Graduates';
+import {ServiceService} from '../../Service/service.service'
 
 @Component({
   selector: 'app-listar',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarComponent implements OnInit {
 
-  constructor() { }
+  graduatesList: Graduates[];
+
+  constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit(): void {
+    this.service.getGraduates()
+    .subscribe(data=>{this.graduatesList = data})
   }
 
 }
