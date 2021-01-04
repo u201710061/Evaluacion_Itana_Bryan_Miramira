@@ -16,4 +16,20 @@ export class ServiceService {
     return this.http.get<Graduates[]>(this.Url+'graduates')
   }
 
+  createGraduates(graduates:Graduates){
+    return this.http.post<Graduates>(this.Url+'addGraduates', graduates);
+  }
+
+  getGraduatesById(id:number){
+    return this.http.get<Graduates>(this.Url+"graduatesById/"+id)
+  }
+
+  updateGraduates(graduates: Graduates){
+    return this.http.put<Graduates>(this.Url+"update", graduates)
+  }
+
+  deleteGraduates(graduates: Graduates){
+    return this.http.delete<Graduates>(this.Url+"delete/"+ graduates.id)
+  }
+
 }

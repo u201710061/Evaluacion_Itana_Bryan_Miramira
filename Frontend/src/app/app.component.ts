@@ -7,9 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frontend';
   
   constructor(private router:Router){}
+
+  ngOnInit(): void {
+    this.router.navigate(["listar"]);
+  }
 
   Listar(){
     this.router.navigate(["listar"]);

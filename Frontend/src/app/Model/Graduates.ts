@@ -4,4 +4,12 @@ export class Graduates{
     sex: String;
     type_of_course: String;
     quantity: number;
+
+    constructor(){
+        this.id = 0;
+        this.year = "";
+        this.sex = "";
+        this.type_of_course = "";
+        this.quantity = 0;
+    }
 }

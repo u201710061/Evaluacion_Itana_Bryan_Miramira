@@ -35,7 +35,7 @@ public class GraduatesService {
     public String deleteGraduates(int id)
     {
         graduatesRepository.deleteById(id);
-        return "Removido exitosamente "+ id;
+        return "";
     }
 
     public  Graduates updateGraduates(Graduates graduates) {

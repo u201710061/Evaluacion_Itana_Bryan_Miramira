@@ -6,26 +6,25 @@
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th>ID</th>
                         <th>Year</th>
                         <th>Sex</th>
                         <th>Type of Course</th>
                         <th>N° of Graduates</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let graduates of graduatesList" class="text-center">
+                    <tr *ngFor="let graduates of graduatesList" class="text-center" style="vertical-align: middle;">
                         <td>{{graduates.id}}</td>
                         <td>{{graduates.year}}</td>
                         <td>{{graduates.sex}}</td>
                         <td>{{graduates.type_of_course}}</td>
                         <td>{{graduates.quantity}}</td>
                         <td>
-                            <button class="btn btn-warning">Editar</button>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="margin-left: 10px;">Delete</button>
+                            <button (click)="Editar(graduates)" class="btn btn-warning">Editar</button>
+                            <button (click)="Delete(graduates)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
                         </td>
                     </tr>
                 </tbody>

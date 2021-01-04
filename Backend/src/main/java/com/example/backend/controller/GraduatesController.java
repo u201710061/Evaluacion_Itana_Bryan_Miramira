@@ -22,21 +22,19 @@ public class GraduatesController {
     public List<Graduates> addGraduatesList(@RequestBody List<Graduates> graduatesList){
         return graduatesService.saveGraduatesList(graduatesList);
     }
+
     @GetMapping("/graduates")
-    public  List<Graduates> findAllGraduates()
-    {
+    public  List<Graduates> findAllGraduates() {
         return graduatesService.getGraduates();
     }
 
     @GetMapping("/graduatesById/{id}")
-    public  Graduates findGraduatesById(@PathVariable int id)
-    {
+    public  Graduates findGraduatesById(@PathVariable int id) {
         return graduatesService.getGraduatesById(id);
     }
 
     @GetMapping("/graduates/{year}")
-    public  List<Graduates> findGraduatesByName(@PathVariable String year)
-    {
+    public  List<Graduates> findGraduatesByName(@PathVariable String year) {
         return graduatesService.getGraduatesByYear(year);
     }
 

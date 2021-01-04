@@ -1,1 +1,28 @@
-<p>add works!</p>
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Add Graduates</h3>
+        </div>
+        <div class="card-body">
+            <form action="">
+                <div class="form-group">
+                    <label for="">Year</label>
+                    <input type="text" class="form-control" [(ngModel)]="graduates.year" name="year">
+                </div>
+                <div>
+                    <label for="">Sex</label>
+                    <input type="text" class="form-control"  [(ngModel)]="graduates.sex" name="sex">
+                </div>
+                <div>
+                    <label for="">Type Of Course</label>
+                    <input type="text" class="form-control"  [(ngModel)]="graduates.type_of_course" name="type_of_course">
+                </div>
+                <div>
+                    <label for="">N° Of Graduates</label>
+                    <input type="text" class="form-control"  [(ngModel)]="graduates.quantity" name="quantity">
+                </div>
+                <button (click)="Guardar()" style="margin-top: 10px;" class="btn btn-danger">Guardar</button>
+            </form>
+        </div>
+    </div>
+</div>
