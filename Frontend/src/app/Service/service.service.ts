@@ -29,7 +29,7 @@ export class ServiceService {
   }
 
   deleteGraduates(graduates: Graduates){
-    return this.http.delete<Graduates>(this.Url+"delete/"+ graduates.id)
+    return this.http.delete(this.Url+"delete/"+ graduates.id, {responseType: 'text'})
   }
 
 }

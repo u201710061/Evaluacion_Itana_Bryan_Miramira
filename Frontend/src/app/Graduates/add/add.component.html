@@ -5,19 +5,26 @@
         </div>
         <div class="card-body">
             <form action="">
-                <div class="form-group">
+                <div class="margin5px">
                     <label for="">Year</label>
                     <input type="text" class="form-control" [(ngModel)]="graduates.year" name="year">
                 </div>
-                <div>
+                <div class="margin5px"> 
                     <label for="">Sex</label>
                     <input type="text" class="form-control"  [(ngModel)]="graduates.sex" name="sex">
                 </div>
-                <div>
+                <div class="margin5px">
                     <label for="">Type Of Course</label>
-                    <input type="text" class="form-control"  [(ngModel)]="graduates.type_of_course" name="type_of_course">
+                    <br>
+                    <select class="form-select" matNativeControl [(ngModel)]="selectedCourse" name="type_of_course">
+                        <option value="" selected>Select</option>
+                        <option *ngFor="let course of courses" [value]="course.value" >
+                          {{course.viewValue}}
+                        </option>
+                      </select>
+                      
                 </div>
-                <div>
+                <div class="margin5px">
                     <label for="">N° Of Graduates</label>
                     <input type="text" class="form-control"  [(ngModel)]="graduates.quantity" name="quantity">
                 </div>

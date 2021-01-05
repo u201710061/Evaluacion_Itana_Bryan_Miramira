@@ -9,8 +9,7 @@ import { ListarComponent } from './Graduates/listar/listar.component';
 import { FormsModule } from '@angular/forms'
 import { ServiceService } from '../app/Service/service.service'
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { MatSelectModule } from '@angular/material/select'
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,MatSelectModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

@@ -2,16 +2,18 @@ package com.example.backend.service;
 
 import com.example.backend.entity.Graduates;
 import com.example.backend.repository.GraduatesRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class GraduatesService {
 
-    @Autowired
-    private GraduatesRepository graduatesRepository;
+    //@Autowired
+    private final GraduatesRepository graduatesRepository;
 
     public Graduates saveGraduates(Graduates graduates) {
         return graduatesRepository.save(graduates);
@@ -24,6 +26,7 @@ public class GraduatesService {
     public List<Graduates> getGraduates(){
         return graduatesRepository.findAll();
     }
+
     public Graduates getGraduatesById(int id){
         return graduatesRepository.findById(id).orElse(null);
     }
@@ -35,7 +38,7 @@ public class GraduatesService {
     public String deleteGraduates(int id)
     {
         graduatesRepository.deleteById(id);
-        return "";
+        return "Se elimino exitosamente "+ id;
     }
 
     public  Graduates updateGraduates(Graduates graduates) {
