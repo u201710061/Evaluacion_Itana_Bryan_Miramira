@@ -31,7 +31,7 @@ export class AddComponent implements OnInit {
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit(): void {
-    
+    this.graduates.quantity = 0
   }
 
   Guardar(){

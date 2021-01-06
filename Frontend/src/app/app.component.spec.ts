@@ -1,35 +1,17 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import {TestBed, async} from '@angular/core/testing'
+import { Router } from '@angular/router';
+import {AppComponent} from './app.component'
 
-describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  });
+describe('AppCompomnent', ()=>{
+  
+  let app: AppComponent;
+  let router: Router;
+  beforeEach(async(()=>{
+    app = new AppComponent(router);
+  }))
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  it('El titulo debe ser Graduates From University First Degree Courses By Type Of Course', async(()=>{
+      expect(app.title).toEqual('Graduates From University First Degree Courses By Type Of Course');
+  }))
+})
 
-  it(`should have as title 'Frontend'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Frontend app is running!');
-  });
-});

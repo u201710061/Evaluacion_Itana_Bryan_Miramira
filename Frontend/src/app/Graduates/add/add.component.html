@@ -7,7 +7,7 @@
             <form action="">
                 <div class="margin5px">
                     <label for="">Year</label>
-                    <input type="text" class="form-control" [(ngModel)]="graduates.year" name="year">
+                    <input id="year" type="text" class="form-control" [(ngModel)]="graduates.year" name="year">
                 </div>
                 <div class="margin5px"> 
                     <label for="">Sex</label>
@@ -22,11 +22,10 @@
                           {{course.viewValue}}
                         </option>
                       </select>
-                      
                 </div>
                 <div class="margin5px">
                     <label for="">N° Of Graduates</label>
-                    <input type="text" class="form-control"  [(ngModel)]="graduates.quantity" name="quantity">
+                    <input id="quantity" type="text" class="form-control"  [(ngModel)]="graduates.quantity" name="quantity" value="0">
                 </div>
                 <button (click)="Guardar()" style="margin-top: 10px;" class="btn btn-danger">Guardar</button>
             </form>

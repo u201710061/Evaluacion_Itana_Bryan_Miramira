@@ -21,7 +21,8 @@ import { MatSelectModule } from '@angular/material/select'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,MatSelectModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

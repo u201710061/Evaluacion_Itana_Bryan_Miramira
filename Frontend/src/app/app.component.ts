@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   
+
+  title: string='Graduates From University First Degree Courses By Type Of Course';
   constructor(private router:Router){}
 
   ngOnInit(): void {
