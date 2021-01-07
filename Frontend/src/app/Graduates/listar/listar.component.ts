@@ -25,11 +25,13 @@ export class ListarComponent implements OnInit {
   } 
 
   Delete(graduates: Graduates){
-    this.service.deleteGraduates(graduates)
-    .subscribe(data =>{
-      this.graduatesList = this.graduatesList.filter(p=>p!=graduates)
-      alert("Se ha eliminado exitosamente...");
-    })
+    if(confirm("Esta seguro que desea eliminar el dato con ID = "+ graduates.id)) {
+      this.service.deleteGraduates(graduates)
+      .subscribe(data =>{
+        this.graduatesList = this.graduatesList.filter(p=>p!=graduates)
+        alert("Se ha eliminado exitosamente...");
+      })
+    }
   }
 
 }

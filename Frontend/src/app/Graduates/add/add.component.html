@@ -7,18 +7,22 @@
             <form action="">
                 <div class="margin5px">
                     <label for="">Year</label>
-                    <input id="year" type="text" class="form-control" [(ngModel)]="graduates.year" name="year">
+                    <input id="year" type="number"  class="form-control" [(ngModel)]="graduates.year" name="year">
                 </div>
                 <div class="margin5px"> 
                     <label for="">Sex</label>
-                    <input type="text" class="form-control"  [(ngModel)]="graduates.sex" name="sex">
+                    <br>
+                    <select class="form-select" matNativeControl [(ngModel)]="selectedSex" name="sex">
+                        <option *ngFor="let sex of genres" [value]="sex.value" >
+                          {{sex.viewValue}}
+                        </option>
+                      </select>
                 </div>
                 <div class="margin5px">
                     <label for="">Type Of Course</label>
                     <br>
-                    <select class="form-select" matNativeControl [(ngModel)]="selectedCourse" name="type_of_course">
-                        <option value="" selected>Select</option>
-                        <option *ngFor="let course of courses" [value]="course.value" >
+                    <select class="form-select"  matNativeControl [(ngModel)]="selectedCourse" name="type_of_course">
+                        <option *ngFor="let course of courses"  [value]="course.value" >
                           {{course.viewValue}}
                         </option>
                       </select>
@@ -32,3 +36,5 @@
         </div>
     </div>
 </div>
+
+

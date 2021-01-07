@@ -1,8 +1,8 @@
 export class Graduates{
     id: number;
-    year: String;
-    sex: String;
-    type_of_course: String;
+    year: string;
+    sex: string;
+    type_of_course: string;
     quantity: number;
 
     constructor(){
