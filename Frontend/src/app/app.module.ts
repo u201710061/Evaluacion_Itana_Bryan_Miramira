@@ -14,8 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/material/material.module';
-
-
+import { ChartsModule, WavesModule,MDBBootstrapModule } from 'angular-bootstrap-md'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +34,10 @@ import { MaterialModule } from 'src/material/material.module';
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
-    MaterialModule
+    MaterialModule,
+    ChartsModule,
+    WavesModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

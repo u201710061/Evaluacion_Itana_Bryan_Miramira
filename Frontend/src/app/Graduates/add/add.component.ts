@@ -39,6 +39,7 @@ export class AddComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   graduates: Graduates = new Graduates;
+  graduatesListByYear : Graduates[] = new Array<Graduates>();
   selectedCourse: string = "" ;
   selectedSex: string = "";
   //selectedYearDate: Date;
@@ -69,27 +70,42 @@ export class AddComponent implements OnInit {
 
   ngOnInit(): void {
     this.courses.sort(((a, b) => a.value < b.value ? -1 : (a.value > b.value ? 1 : 0)))
-
     this.selectedCourse = this.courses[0].value;
     this.selectedSex = this.genres[0].value;
     this.graduates.quantity = 0;
+
   }
 
   Guardar(){
-
+    this.graduates.type_of_course = this.selectedCourse;
+    this.graduates.sex = this.selectedSex;
     if( parseInt(this.graduates.year) <1901 || parseInt(this.graduates.year)> 2020)
     {
       alert("El año debe estar entre 1901 y 2020")
       return;
     }
-
-    this.graduates.type_of_course = this.selectedCourse;
-    this.graduates.sex = this.selectedSex;
-    console.log(this.graduates);
-    this.service.createGraduates(this.graduates)
+    console.log(this.graduatesListByYear)
+    console.log(this.graduates)
+    this.service.getGraduatesByYear(parseInt(this.graduates.year))
     .subscribe(data=>{
-      alert("Se agrego con exito!!")
-      this.router.navigate(["listar"])
+      this.graduatesListByYear = data
+      for (let index = 0; index < this.graduatesListByYear.length; index++) {
+        const element = this.graduatesListByYear[index];
+        if(element.type_of_course == this.graduates.type_of_course)
+        {
+          alert("Ya existen datos en el año y curso indicado, por favor use la opcion de actualizar")
+          return;
+        }
+      }
+
+      console.log(this.graduates);
+      this.service.createGraduates(this.graduates)
+      .subscribe(data=>{
+        alert("Se agrego con exito!!")
+        this.router.navigate(["listar"])
+      })
     })
+    
+    
   }
 }

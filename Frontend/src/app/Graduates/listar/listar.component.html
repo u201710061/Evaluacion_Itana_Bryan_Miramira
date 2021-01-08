@@ -4,7 +4,7 @@
             <h3>Graduates</h3>
         </div>
         <div class="card-body">
-            <table class="table table-hover">
+            <table class="table table-hover" >
                 <thead>
                     <tr class="text-center">
                         <th>ID</th>
@@ -32,3 +32,18 @@
         </div>
     </div>
 </div>
+
+<h2 style="text-align: center; margin-top: 20px;">Graduates From University First Degree Courses By Type Of Course in {{year}}</h2>
+<div style="display: block;">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"
+        style="max-width: 750px; margin: auto;">
+    </canvas>
+  </div>

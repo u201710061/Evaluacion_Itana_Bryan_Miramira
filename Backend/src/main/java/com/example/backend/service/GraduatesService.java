@@ -17,6 +17,15 @@ public class GraduatesService {
 
 
     public Graduates saveGraduates(Graduates graduates) {
+
+        /*List<Graduates> graduatesbyYear = graduatesRepository.findByYear(graduates.getYear());
+        for (Graduates item: graduatesbyYear) {
+            if(graduates.getType_of_course() ==  item.getType_of_course())
+            {
+                return
+            }
+        }*/
+
         return graduatesRepository.save(graduates);
     }
 

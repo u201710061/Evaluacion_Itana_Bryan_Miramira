@@ -32,4 +32,7 @@ export class ServiceService {
     return this.http.delete(this.Url+"delete/"+ graduates.id, {responseType: 'text'})
   }
 
+  getGraduatesByYear(year: number){
+    return this.http.get<Graduates[]>(this.Url+"graduates/"+year)
+  }
 }
