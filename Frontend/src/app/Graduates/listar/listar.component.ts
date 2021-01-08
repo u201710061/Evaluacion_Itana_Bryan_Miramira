@@ -16,17 +16,28 @@ export class ListarComponent implements OnInit {
   quantityArray : number[] = new Array<number>();
   coursesArray : string[] = new Array<string>(); 
 
-  year: number = 2013;
+  year: number = 2014;
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit(): void {
+
     this.service.getGraduates()
     .subscribe(data=>{this.graduatesList = data})
+
+
     this.service.getGraduatesByYear(this.year).subscribe(data=>{
       this.graduatesListByYear = data; 
       for (let index = 0; index < this.graduatesListByYear.length; index++) {
+        const element = this.graduatesListByYear[index];
+        if(this.coursesArray.includes(element.type_of_course))
+        {
+          let indice = this.coursesArray.indexOf(element.type_of_course) 
+          this.quantityArray[indice] += element.quantity;
+          continue;
+        }
         this.quantityArray.push(this.graduatesListByYear[index].quantity);
         this.coursesArray.push(this.graduatesListByYear[index].type_of_course);
+
       }
       this.chartDatasets =  [
         { data: this.quantityArray, label: 'Graduates From University First Degree Courses By Type Of Course in' + 2013 }

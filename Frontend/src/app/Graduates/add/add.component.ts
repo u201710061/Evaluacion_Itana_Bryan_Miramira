@@ -91,9 +91,9 @@ export class AddComponent implements OnInit {
       this.graduatesListByYear = data
       for (let index = 0; index < this.graduatesListByYear.length; index++) {
         const element = this.graduatesListByYear[index];
-        if(element.type_of_course == this.graduates.type_of_course)
+        if(element.type_of_course == this.graduates.type_of_course && element.sex == this.graduates.sex)
         {
-          alert("Ya existen datos en el año y curso indicado, por favor use la opcion de actualizar")
+          alert("Ya existen datos en el año, curso y sexo indicado, por favor use la opcion de actualizar")
           return;
         }
       }
