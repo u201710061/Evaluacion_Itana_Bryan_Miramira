@@ -4,7 +4,7 @@
             <h3>Graduates</h3>
         </div>
         <div class="card-body">
-            <table class="table table-hover" >
+            <table class="table table-hover">
                 <thead>
                     <tr class="text-center">
                         <th>ID</th>
@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let graduates of graduatesList" class="text-center" style="vertical-align: middle;">
+                    <tr *ngFor="let graduates of graduatesList" class="text-center">
                         <td>{{graduates.id}}</td>
                         <td>{{graduates.year}}</td>
                         <td>{{graduates.sex}}</td>
@@ -32,9 +32,15 @@
         </div>
     </div>
 </div>
-
-<h2 style="text-align: center; margin-top: 20px;">Graduates From University First Degree Courses By Type Of Course in {{year}}</h2>
-<div style="display: block;">
+<div>
+<h2 style="text-align: center; margin-top: 20px;">Graduates From University First Degree Courses By Type Of Course in</h2>
+<select matNativeControl [(ngModel)]="yearSelected" name="yearChart" (change)="ReDrawChart()" class="form-select" style="width: 100px; margin:auto;"> 
+    <option *ngFor="let year of years" [value]="year" >
+      {{year}}
+    </option>
+  </select>
+</div>
+<div *ngIf="!emptyResults" style="display: block;">
     <canvas mdbChart
         [chartType]="chartType"
         [datasets]="chartDatasets"
@@ -47,3 +53,7 @@
         style="max-width: 750px; margin: auto;">
     </canvas>
   </div>
+<br>
+<div *ngIf="emptyResults" class="alert alert-danger box-msg" style="text-align: center;" role="alert">
+    <strong>No hay datos registrado este año</strong>
+</div>

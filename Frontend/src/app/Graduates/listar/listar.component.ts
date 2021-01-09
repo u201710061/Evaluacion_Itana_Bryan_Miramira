@@ -16,16 +16,25 @@ export class ListarComponent implements OnInit {
   quantityArray : number[] = new Array<number>();
   coursesArray : string[] = new Array<string>(); 
 
-  year: number = 2014;
+  years : number[] = new Array<number>();
+
+  yearSelected: number = 2014;
   constructor(private service:ServiceService, private router:Router) { }
+
+  emptyResults : boolean = false;
 
   ngOnInit(): void {
 
+    for (let i = 1901; i < 2020; i++) {
+      this.years.push(i);
+      
+    }
+    this.yearSelected = 2014;
     this.service.getGraduates()
     .subscribe(data=>{this.graduatesList = data})
 
 
-    this.service.getGraduatesByYear(this.year).subscribe(data=>{
+    this.service.getGraduatesByYear(this.yearSelected).subscribe(data=>{
       this.graduatesListByYear = data; 
       for (let index = 0; index < this.graduatesListByYear.length; index++) {
         const element = this.graduatesListByYear[index];
@@ -40,7 +49,7 @@ export class ListarComponent implements OnInit {
 
       }
       this.chartDatasets =  [
-        { data: this.quantityArray, label: 'Graduates From University First Degree Courses By Type Of Course in' + 2013 }
+        { data: this.quantityArray, label: 'Graduates From University First Degree Courses By Type Of Course in' + this.yearSelected }
       ];
       this.chartLabels = this.coursesArray;
       })
@@ -61,6 +70,42 @@ export class ListarComponent implements OnInit {
         alert("Se ha eliminado exitosamente...");
       })
     }
+  }
+
+  ReDrawChart(){
+
+
+    this.coursesArray = [];
+    this.quantityArray = [];
+
+    this.service.getGraduatesByYear(this.yearSelected).subscribe(data=>{
+      this.graduatesListByYear = data; 
+      for (let index = 0; index < this.graduatesListByYear.length; index++) {
+        const element = this.graduatesListByYear[index];
+        if(this.coursesArray.includes(element.type_of_course))
+        {
+          let indice = this.coursesArray.indexOf(element.type_of_course) 
+          this.quantityArray[indice] += element.quantity;
+          continue;
+        }
+        this.quantityArray.push(this.graduatesListByYear[index].quantity);
+        this.coursesArray.push(this.graduatesListByYear[index].type_of_course);
+
+      }
+      this.chartDatasets =  [
+        { data: this.quantityArray, label: 'Graduates From University First Degree Courses By Type Of Course in' + this.yearSelected }
+      ];
+      this.chartLabels = this.coursesArray;
+
+      if(this.graduatesListByYear.length > 0){
+        this.emptyResults = false;
+      }
+      else{
+        this.emptyResults = true;
+      }  
+    })
+
+
   }
   
   public chartType: string = 'pie';
